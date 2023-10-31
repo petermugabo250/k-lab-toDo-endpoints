@@ -1,0 +1,10 @@
+import express  from "express";
+import { addTask,updateTasks,ViewAlltask,ViewTaskbyId,Deletetask} from "../controllers/todoController";
+import fileUpload from "../../helper/multer";
+const todoRoutes = express.Router();
+todoRoutes.post("/add",fileUpload.single("files"),addTask);
+todoRoutes.put("/update/:id",fileUpload.single("files"),updateTasks);
+todoRoutes.delete("/delete/:id",Deletetask);
+todoRoutes.get("/viewOne/:id",ViewTaskbyId);
+todoRoutes.get("/viewAll",ViewAlltask);
+export default todoRoutes;
